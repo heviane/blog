@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content"></div>
+        <header>
+            <h1>Welcome</h1>
+        </header>
+
+        <main>
+            <div>
+            <nav>
+                <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            </div>
+            <div>
+            <section>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const articles = document.querySelectorAll("article");
+
+                        articles.forEach(article => {
+                            const readMoreLink = article.querySelector("a");
+                            const fullText = document.createElement("p");
+                            fullText.style.display = "none";
+
+                            if (article.querySelector("h2").textContent.includes("Blog Post Title 1")) {
+                                fullText.textContent = "Additional content for Blog Post Title 1. This is the expanded text that appears when 'Read more...' is clicked.";
+                            } else if (article.querySelector("h2").textContent.includes("Blog Post Title 2")) {
+                                fullText.textContent = "Additional content for Blog Post Title 2. This is the expanded text that appears when 'Read more...' is clicked.";
+                            }
+
+                            article.appendChild(fullText);
+
+                            readMoreLink.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                if (fullText.style.display === "none") {
+                                    fullText.style.display = "block";
+                                    readMoreLink.textContent = "Read less...";
+                                } else {
+                                    fullText.style.display = "none";
+                                    readMoreLink.textContent = "Read more...";
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <article>
+                <h2 id="blog">Blog Post Title 1</h2>
+                <p>Posted on <time datetime="2023-10-01">October 1, 2023</time></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel nisi id libero tincidunt tincidunt.</p>
+                <a href="#">Read more...</a>
+                </article>
+                <article>
+                <h2>Blog Post Title 2</h2>
+                <p>Posted on <time datetime="2023-10-02">October 2, 2023</time></p>
+                <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</p>
+                <a href="#">Read more...</a>
+                </article>
+            </section>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2023</p>
+        </footer>
+    </div>
+</body>
+</html>
